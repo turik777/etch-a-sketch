@@ -13,7 +13,7 @@ body {
 }
 
 button {
-    margin-bottom: 12px;
+    margin: 12px;
     padding: 12px 24px;
     font-size: 24px;
 }
