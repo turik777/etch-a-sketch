@@ -1,6 +1,7 @@
 const container = document.querySelector(".container");
 const black = document.querySelector("#black");
 const color = document.querySelector("#color");
+const gray = document.querySelector("#gray");
 
 for (let i = 0; i < 16 * 16; i++) {
     const div = document.createElement("div");
@@ -14,6 +15,7 @@ for (let i = 0; i < 16 * 16; i++) {
 
 black.addEventListener("click", newGrid);
 color.addEventListener("click", newColorGrid);
+gray.addEventListener("click", newGrayGrid);
 
 function newGrid(squaresPerSide) {
     squaresPerSide = prompt("Enter number of squares per side:", 16);
@@ -53,6 +55,30 @@ function newColorGrid(squaresPerSide) {
         div.style.width = div.style.height;
         div.addEventListener("mouseover", () => {
             div.style.backgroundColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        });
+    }
+}
+
+function newGrayGrid(squaresPerSide) {
+    squaresPerSide = prompt("Enter number of squares per side:", 16);
+    if (squaresPerSide > 100) {
+        alert("Maximum number is 100");
+        return;
+    }
+    const div = document.querySelectorAll(".container div");
+    div.forEach(square => {
+        container.removeChild(square);
+    })
+    for (let i = 0; i < squaresPerSide * squaresPerSide; i++) {
+        const div = document.createElement("div");
+        container.appendChild(div);
+        div.style.height = 960 / squaresPerSide + "px";
+        div.style.width = div.style.height;
+        let opacity = 0.1;
+        div.addEventListener("mouseover", () => {
+            div.style.backgroundColor = "#000000";
+            div.style.opacity = opacity;
+            opacity += 0.1;
         });
     }
 }
