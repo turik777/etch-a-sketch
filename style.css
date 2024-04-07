@@ -8,8 +8,3 @@
     display: flex;
     flex-wrap: wrap;
 }
-
-.container div {
-    height: 25px;
-    width: 25px;
-}
